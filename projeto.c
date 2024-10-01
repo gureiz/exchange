@@ -1,5 +1,9 @@
 #include "projeto.h"
 
+float cotacaoBitcoin = 50000.0;
+float cotacaoEthereum = 3000.0;
+float cotacaoRipple = 1.0;
+
 // a função de login
 int login(Usuario usuarios[], int numUsuarios, char *cpf, char *senha) {
   for (int i = 0; i < numUsuarios; i++) {
@@ -357,4 +361,13 @@ void venderCripto(Usuario *usuario) {
   default:
     printf("Opcao invalida!\n");
   }
+}
+
+//atualizar cotações cripto
+void atualizarCotas() {
+  srand(time(NULL));
+  cotacaoBitcoin += cotacaoBitcoin * ((rand() % 11 - 5) / 100.0);
+  cotacaoEthereum += cotacaoEthereum * ((rand() % 11 - 5) / 100.0);
+  cotacaoRipple += cotacaoRipple * ((rand() % 11 - 5) / 100.0);
+  printf("Cotações atualizadas!\n");
 }

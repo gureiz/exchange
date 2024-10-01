@@ -24,7 +24,13 @@ typedef struct {
     char historico[MAX_TRANSACOES][100];
 } Usuario;
 
-// Declaração das funções que estarão em projeto.c
+typedef enum { BITCOIN, ETHEREUM, RIPPLE } Cripto;
+
+extern float cotacaoBitcoin;
+extern float cotacaoEthereum;
+extern float cotacaoRipple;
+
+//declaração das funções que estarão em projeto.c
 void salvarDados(Usuario usuarios[], int numUsuarios);
 void carregarDados(Usuario usuarios[], int *numUsuarios);
 int login(Usuario usuarios[], int numUsuarios, char *cpf, char *senha);
