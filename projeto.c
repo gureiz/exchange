@@ -273,3 +273,88 @@ void comprarCripto(Usuario *usuario) {
     printf("Opcao invalida!\n");
   }
 }
+
+//vender criptomoedas
+void venderCripto(Usuario *usuario) {
+  int opcao;
+  float valor, taxa;
+  char confirmacao;
+
+  printf("\nEscolha a criptomoeda para vender:\n");
+  printf("1. Bitcoin\n2. Ethereum\n3. Ripple\n");
+  scanf("%d", &opcao);
+
+  switch (opcao) {
+  case 1:
+    printf("Digite a quantidade de BTC: ");
+    scanf("%f", &valor);
+    taxa = valor * cotacaoBitcoin * 0.03;
+    if (usuario->carteira.bitcoin >= valor) {
+      printf("Vender %.6f BTC por R$ %.2f (taxa: R$ %.2f)? (S/N) ", valor,
+             valor * cotacaoBitcoin, taxa);
+      scanf(" %c", &confirmacao);
+      if (confirmacao == 'S' || confirmacao == 's') {
+        usuario->carteira.bitcoin -= valor;
+        usuario->carteira.reais += (valor * cotacaoBitcoin) - taxa;
+        printf("Venda realizada com sucesso!\n");
+
+        //salvar no historico (bitcoin)
+        char operacao[100];
+        snprintf(operacao, 100, "Venda de %.6f BTC por R$ %.2f", valor,
+                 valor * cotacaoBitcoin);
+        registrarOperacao(usuario, operacao);
+      }
+    } else {
+      printf("Quantidade de Bitcoin insuficiente!\n");
+    }
+    break;
+  case 2:
+    printf("Digite a quantidade de ETH: ");
+    scanf("%f", &valor);
+    taxa = valor * cotacaoEthereum * 0.02;
+    if (usuario->carteira.ethereum >= valor) {
+      printf("Vender %.6f ETH por R$ %.2f (taxa: R$ %.2f)? (S/N) ", valor,
+             valor * cotacaoEthereum, taxa);
+      scanf(" %c", &confirmacao);
+      if (confirmacao == 'S' || confirmacao == 's') {
+        usuario->carteira.ethereum -= valor;
+        usuario->carteira.reais += (valor * cotacaoEthereum) - taxa;
+        printf("Venda realizada com sucesso!\n");
+
+        //salvar no historico (ethereum)
+        char operacao[100];
+        snprintf(operacao, 100, "Venda de %.6f ETH por R$ %.2f", valor,
+                 valor * cotacaoEthereum);
+        registrarOperacao(usuario, operacao);
+      }
+    } else {
+      printf("Quantidade de Ethereum insuficiente!\n");
+    }
+    break;
+  case 3: 
+    printf("Digite a quantidade de XRP: ");
+    scanf("%f", &valor);
+    taxa = valor * cotacaoRipple * 0.01;
+    if (usuario->carteira.ripple >= valor) {
+      printf("Vender %.6f XRP por R$ %.2f (taxa: R$ %.2f)? (S/N) ", valor,
+             valor * cotacaoRipple, taxa);
+      scanf(" %c", &confirmacao);
+      if (confirmacao == 'S' || confirmacao == 's') {
+        usuario->carteira.ripple -= valor;
+        usuario->carteira.reais += (valor * cotacaoRipple) - taxa;
+        printf("Venda realizada com sucesso!\n");
+
+        //salvar no histotico
+        char operacao[100];
+        snprintf(operacao, 100, "Venda de %.6f XRP por R$ %.2f", valor,
+                 valor * cotacaoRipple);
+        registrarOperacao(usuario, operacao);
+      }
+    } else {
+      printf("Quantidade de Ripple insuficiente!\n");
+    }
+    break;
+  default:
+    printf("Opcao invalida!\n");
+  }
+}
