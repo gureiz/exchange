@@ -148,8 +148,35 @@ void depositarReais(Usuario *usuario) {
   usuario->carteira.reais += valor;
   printf("Deposito realizado com sucesso!\n");
 
-  // Registrar no histórico
+  //registrar na funcao de registrar operacao
   char operacao[100];
   snprintf(operacao, 100, "Deposito de R$ %.2f", valor);
   registrarOperacao(usuario, operacao);
+}
+
+//sacar
+void sacarReais(Usuario *usuario) {
+  float valor;
+  char senha[20];
+  printf("Digite o valor do saque: R$ ");
+  scanf("%f", &valor);
+
+  printf("Confirme sua senha: ");
+  scanf("%s", senha);
+
+  if (strcmp(senha, usuario->senha) == 0) {
+    if (usuario->carteira.reais >= valor) {
+      usuario->carteira.reais -= valor;
+      printf("Saque realizado com sucesso!\n");
+
+      //registrar
+      char operacao[100];
+      snprintf(operacao, 100, "Saque de R$ %.2f", valor);
+      registrarOperacao(usuario, operacao);
+    } else {
+      printf("Saldo insuficiente!\n");
+    }
+  } else {
+    printf("Senha incorreta!\n");
+  }
 }
