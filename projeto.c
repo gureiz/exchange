@@ -57,3 +57,51 @@ void carregarDados(Usuario usuarios[], int *numUsuarios) {
   fread(usuarios, sizeof(Usuario), *numUsuarios, arquivo);
   fclose(arquivo);
 }
+
+//funcao para exibir o menu apos o usuario realizar o login
+void menuPrincipal(Usuario *usuario) {
+  int opcao;
+
+  do {
+    printf("\n--- Menu Principal ---\n");
+    printf("1. Consultar saldo\n");
+    printf("2. Consultar extrato\n");
+    printf("3. Depositar reais\n");
+    printf("4. Sacar reais\n");
+    printf("5. Comprar criptomoedas\n");
+    printf("6. Vender criptomoedas\n");
+    printf("7. Atualizar cotações\n");
+    printf("0. Sair\n");
+    printf("Escolha uma opcao: ");
+    scanf("%d", &opcao);
+
+    switch (opcao) {
+    case 1:
+      consultarSaldo(usuario);
+      break;
+    case 2:
+      consultarExtrato(usuario);
+      break;
+    case 3:
+      depositarReais(usuario);
+      break;
+    case 4:
+      sacarReais(usuario);
+      break;
+    case 5:
+      comprarCripto(usuario);
+      break;
+    case 6:
+      venderCripto(usuario);
+      break;
+    case 7:
+      atualizarCotas();
+      break;
+    case 0:
+      printf("Saindo...\n");
+      break;
+    default:
+      printf("Opcao invalida!\n");
+    }
+  } while (opcao != 0);
+}
