@@ -105,3 +105,15 @@ void menuPrincipal(Usuario *usuario) {
     }
   } while (opcao != 0);
 }
+
+//saldo
+void consultarSaldo(Usuario *usuario) {
+  printf("\n--- Saldo ---\n");
+  printf("Reais: %.2f\n", usuario->carteira.reais);
+  printf("Bitcoin: %.6f (R$ %.2f)\n", usuario->carteira.bitcoin,
+         usuario->carteira.bitcoin * cotacaoBitcoin);
+  printf("Ethereum: %.6f (R$ %.2f)\n", usuario->carteira.ethereum,
+         usuario->carteira.ethereum * cotacaoEthereum);
+  printf("Ripple: %.6f (R$ %.2f)\n", usuario->carteira.ripple,
+         usuario->carteira.ripple * cotacaoRipple);
+}
