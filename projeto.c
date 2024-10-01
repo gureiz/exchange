@@ -117,3 +117,15 @@ void consultarSaldo(Usuario *usuario) {
   printf("Ripple: %.6f (R$ %.2f)\n", usuario->carteira.ripple,
          usuario->carteira.ripple * cotacaoRipple);
 }
+
+//consultar extrato
+void consultarExtrato(Usuario *usuario) {
+  printf("\n--- Extrato ---\n");
+  if (usuario->numTransacoes == 0) {
+    printf("Nenhuma transacao realizada.\n");
+  } else {
+    for (int i = 0; i < usuario->numTransacoes; i++) {
+      printf("%s\n", usuario->historico[i]);
+    }
+  }
+}
