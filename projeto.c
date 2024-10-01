@@ -129,3 +129,27 @@ void consultarExtrato(Usuario *usuario) {
     }
   }
 }
+
+//operações realizadas 
+void registrarOperacao(Usuario *usuario, const char *operacao) {
+  if (usuario->numTransacoes < MAX_TRANSACOES) {
+    snprintf(usuario->historico[usuario->numTransacoes], 100, "%s", operacao);
+    usuario->numTransacoes++;
+  } else {
+    printf("Limite de transacoes atingido!\n");
+  }
+}
+
+//depositar
+void depositarReais(Usuario *usuario) {
+  float valor;
+  printf("Digite o valor do deposito: R$ ");
+  scanf("%f", &valor);
+  usuario->carteira.reais += valor;
+  printf("Deposito realizado com sucesso!\n");
+
+  // Registrar no histórico
+  char operacao[100];
+  snprintf(operacao, 100, "Deposito de R$ %.2f", valor);
+  registrarOperacao(usuario, operacao);
+}
