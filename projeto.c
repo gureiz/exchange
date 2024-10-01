@@ -358,3 +358,12 @@ void venderCripto(Usuario *usuario) {
     printf("Opcao invalida!\n");
   }
 }
+
+//atualizar cotações cripto
+void atualizarCotas() {
+  srand(time(NULL));
+  cotacaoBitcoin += cotacaoBitcoin * ((rand() % 11 - 5) / 100.0);
+  cotacaoEthereum += cotacaoEthereum * ((rand() % 11 - 5) / 100.0);
+  cotacaoRipple += cotacaoRipple * ((rand() % 11 - 5) / 100.0);
+  printf("Cotações atualizadas!\n");
+}
