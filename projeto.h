@@ -1,3 +1,6 @@
+#ifndef PROJETO_H
+#define PROJETO_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -21,6 +24,7 @@ typedef struct {
     char historico[MAX_TRANSACOES][100];
 } Usuario;
 
+// Declaração das funções que estarão em projeto.c
 void salvarDados(Usuario usuarios[], int numUsuarios);
 void carregarDados(Usuario usuarios[], int *numUsuarios);
 int login(Usuario usuarios[], int numUsuarios, char *cpf, char *senha);
@@ -35,12 +39,4 @@ void venderCripto(Usuario *usuario);
 void atualizarCotas();
 void registrarOperacao(Usuario *usuario, const char *operacao);
 
-typedef enum {
-    BITCOIN,
-    ETHEREUM,
-    RIPPLE
-} Cripto;
-
-float cotacaoBitcoin = 50000.0;
-float cotacaoEthereum = 3000.0;
-float cotacaoRipple = 1.0;
+#endif
