@@ -5,6 +5,8 @@ O projeto de Exchange de criptomoedas tem como objetivo oferecer uma plataforma 
 
 --COMPILAÇÃO/EXECUÇÃO--
 *Atenção: Será necessário a instalação de um compilador C
+- Utilize os arquivos main.c, projeto.c e projeto.h
+
 1.	Abra o Terminal
 2.	Execute o comando: gcc *.c && ./a.out
 3.	Após a compilação bem-sucedida, execute o programa 
