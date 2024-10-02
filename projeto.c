@@ -199,82 +199,80 @@ void comprarCripto(Usuario *usuario) {
   printf("Digite o valor da compra: R$ ");
   scanf("%f", &valor);
 
-  //pede para o usuario colocar a senha
   printf("Digite sua senha: ");
   scanf("%s", senha);
 
-  //verifica a se a senha do usuario condiz com a do cadastro
   if (strcmp(senha, usuario->senha) != 0) {
     printf("Senha incorreta!\n");
-    return;
+    return;  
   }
 
   switch (opcao) {
-  case 1: 
-    taxa = valor * 0.02;
-    if (usuario->carteira.reais >= (valor + taxa)) {
-      printf("Comprar %.6f BTC por R$ %.2f (taxa: R$ %.2f)? (S/N) ",
-             valor / cotacaoBitcoin, valor, taxa);
-      scanf(" %c", &confirmacao);
-      if (confirmacao == 'S' || confirmacao == 's') {
-        usuario->carteira.reais -= (valor + taxa);
-        usuario->carteira.bitcoin += valor / cotacaoBitcoin;
-        printf("Compra realizada com sucesso!\n");
-
-        //salvar o bitcoin
-        char operacao[100];
-        snprintf(operacao, 100, "Compra de %.6f BTC por R$ %.2f",
-                 valor / cotacaoBitcoin, valor);
-        registrarOperacao(usuario, operacao);
+    case 1: 
+      taxa = valor * 0.02;
+      if (usuario->carteira.reais >= (valor + taxa)) {
+        printf("Comprar %.6f BTC por R$ %.2f (taxa: R$ %.2f)? (S/N) ",
+               valor / cotacaoBitcoin, valor, taxa);
+        scanf(" %c", &confirmacao);
+        if (confirmacao == 'S' || confirmacao == 's') {
+          usuario->carteira.reais -= (valor + taxa);
+          usuario->carteira.bitcoin += valor / cotacaoBitcoin;
+          printf("Compra realizada com sucesso!\n");
+            
+          char operacao[100];
+          snprintf(operacao, 100, "Compra de %.6f BTC por R$ %.2f",
+                   valor / cotacaoBitcoin, valor);
+          registrarOperacao(usuario, operacao);
+        }
+      } else {
+        printf("Saldo insuficiente!\n");
       }
-    } else {
-      printf("Saldo insuficiente!\n");
-    }
-    break;
-  case 2: 
-    taxa = valor * 0.01;
-    if (usuario->carteira.reais >= (valor + taxa)) {
-      printf("Comprar %.6f ETH por R$ %.2f (taxa: R$ %.2f)? (S/N) ",
-             valor / cotacaoEthereum, valor, taxa);
-      scanf(" %c", &confirmacao);
-      if (confirmacao == 'S' || confirmacao == 's') {
-        usuario->carteira.reais -= (valor + taxa);
-        usuario->carteira.ethereum += valor / cotacaoEthereum;
-        printf("Compra realizada com sucesso!\n");
+      break;
 
-        // salvar o ethereum
-        char operacao[100];
-        snprintf(operacao, 100, "Compra de %.6f ETH por R$ %.2f",
-                 valor / cotacaoEthereum, valor);
-        registrarOperacao(usuario, operacao);
-      }
-    } else {
-      printf("Saldo insuficiente!\n");
-    }
-    break;
-  case 3:
-    taxa = valor * 0.01;
-    if (usuario->carteira.reais >= (valor + taxa)) {
-      printf("Comprar %.6f XRP por R$ %.2f (taxa: R$ %.2f)? (S/N) ",
-             valor / cotacaoRipple, valor, taxa);
-      scanf(" %c", &confirmacao);
-      if (confirmacao == 'S' || confirmacao == 's') {
-        usuario->carteira.reais -= (valor + taxa);
-        usuario->carteira.ripple += valor / cotacaoRipple;
-        printf("Compra realizada com sucesso!\n");
+    case 2:  
+      taxa = valor * 0.01;
+      if (usuario->carteira.reais >= (valor + taxa)) {
+        printf("Comprar %.6f ETH por R$ %.2f (taxa: R$ %.2f)? (S/N) ",
+               valor / cotacaoEthereum, valor, taxa);
+        scanf(" %c", &confirmacao);
+        if (confirmacao == 'S' || confirmacao == 's') {
+          usuario->carteira.reais -= (valor + taxa);
+          usuario->carteira.ethereum += valor / cotacaoEthereum;
+          printf("Compra realizada com sucesso!\n");
 
-        //salvar o ripple
-        char operacao[100];
-        snprintf(operacao, 100, "Compra de %.6f XRP por R$ %.2f",
-                 valor / cotacaoRipple, valor);
-        registrarOperacao(usuario, operacao);
+          char operacao[100];
+          snprintf(operacao, 100, "Compra de %.6f ETH por R$ %.2f",
+                   valor / cotacaoEthereum, valor);
+          registrarOperacao(usuario, operacao);
+        }
+      } else {
+        printf("Saldo insuficiente!\n");
       }
-    } else {
-      printf("Saldo insuficiente!\n");
-    }
-    break;
-  default:
-    printf("Opcao invalida!\n");
+      break;
+
+    case 3:  
+      taxa = valor * 0.01;
+      if (usuario->carteira.reais >= (valor + taxa)) {
+        printf("Comprar %.6f XRP por R$ %.2f (taxa: R$ %.2f)? (S/N) ",
+               valor / cotacaoRipple, valor, taxa);
+        scanf(" %c", &confirmacao);
+        if (confirmacao == 'S' || confirmacao == 's') {
+          usuario->carteira.reais -= (valor + taxa);
+          usuario->carteira.ripple += valor / cotacaoRipple;
+          printf("Compra realizada com sucesso!\n");
+
+          char operacao[100];
+          snprintf(operacao, 100, "Compra de %.6f XRP por R$ %.2f",
+                   valor / cotacaoRipple, valor);
+          registrarOperacao(usuario, operacao);
+        }
+      } else {
+        printf("Saldo insuficiente!\n");
+      }
+      break;
+
+    default:
+      printf("Opcao invalida!\n");
   }
 }
 
