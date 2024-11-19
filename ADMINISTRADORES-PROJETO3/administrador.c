@@ -75,7 +75,7 @@ void carregarInvestidores() {
     }
 }
 
-// Função para salvar as criptomoedas em um arquivo
+//salva os dados das criptos em um arquivo .txt
 void salvarCriptomoedas() {
     FILE *file = fopen("criptomoedas.txt", "w");
     if (file != NULL) {
