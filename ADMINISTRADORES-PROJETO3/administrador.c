@@ -176,3 +176,25 @@ void excluirInvestidor() {
     }
     printf("Investidor não encontrado.\n");
 }
+
+//cadastrar criptomoeda
+void cadastrarCriptomoeda() {
+    if (numCriptomoedas >= MAX_CRIPTOMOEDAS) {
+        printf("Limite máximo atingido!\n");
+        return;
+    }
+
+    Criptomoeda nova;
+    printf("Digite o nome da criptomoeda: ");
+    scanf("%s", nova.nome);
+    printf("Digite a cotação inicial: ");
+    scanf("%f", &nova.cotacaoAtual);
+    printf("Digite a taxa de compra (em %%): ");
+    scanf("%f", &nova.taxaCompra);
+    printf("Digite a taxa de venda (em %%): ");
+    scanf("%f", &nova.taxaVenda);
+
+    criptomoedas[numCriptomoedas++] = nova;
+    salvarCriptomoedas();  // Salva as criptomoedas no arquivo após o cadastro
+    printf("Cadastrada com sucesso!\n");
+}
