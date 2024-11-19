@@ -147,3 +147,32 @@ void cadastrarInvestidor() {
     salvarInvestidores();  // Salva os investidores no arquivo após o cadastro
     printf("Investidor cadastrado com sucesso!\n");
 }
+
+//excluir um investidor
+void excluirInvestidor() {
+    char cpf[12];
+    printf("Digite o CPF do investidor a ser excluído: ");
+    scanf("%s", cpf);
+
+    for (int i = 0; i < numInvestidores; i++) {
+        if (strcmp(investidores[i].cpf, cpf) == 0) {
+            printf("Investidor encontrado:\n");
+            printf("Nome: %s, CPF: %s\n", investidores[i].nome, investidores[i].cpf);
+            printf("Confirmar exclusão? (S/N): ");
+            char confirmacao;
+            scanf(" %c", &confirmacao);
+            if (confirmacao == 'S' || confirmacao == 's') {
+                for (int j = i; j < numInvestidores - 1; j++) {
+                    investidores[j] = investidores[j + 1];
+                }
+                numInvestidores--;
+                printf("Investidor excluído com sucesso!\n");
+                return;
+            } else {
+                printf("Operação cancelada.\n");
+                return;
+            }
+        }
+    }
+    printf("Investidor não encontrado.\n");
+}
