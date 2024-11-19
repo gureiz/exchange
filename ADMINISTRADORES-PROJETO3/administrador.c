@@ -89,3 +89,18 @@ void salvarCriptomoedas() {
         fclose(file);
     }
 }
+
+//carrega os dados do arquivo salvo
+void carregarCriptomoedas() {
+    FILE *file = fopen("criptomoedas.txt", "r");
+    if (file != NULL) {
+        while (fscanf(file, "%s %f %f %f", 
+                        criptomoedas[numCriptomoedas].nome, 
+                        &criptomoedas[numCriptomoedas].cotacaoAtual, 
+                        &criptomoedas[numCriptomoedas].taxaCompra, 
+                        &criptomoedas[numCriptomoedas].taxaVenda) != EOF) {
+            numCriptomoedas++;
+        }
+        fclose(file);
+    }
+}
