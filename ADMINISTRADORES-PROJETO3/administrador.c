@@ -121,3 +121,29 @@ int efetuarLogin() {
     printf("CPF ou senha incorretos.\n");
     return 0;
 }
+
+//cadastrar um novo investidor
+void cadastrarInvestidor() {
+    if (numInvestidores >= MAX_USUARIOS) {
+        printf("Limite máximo de investidores atingido!\n");
+        return;
+    }
+
+    Usuario novo;
+    printf("Digite o nome do investidor: ");
+    scanf(" %[^\n]", novo.nome);
+    printf("Digite o CPF (11 dígitos): ");
+    scanf("%s", novo.cpf);
+    printf("Digite a senha: ");
+    scanf("%s", novo.senha);
+
+    novo.saldoReais = 0.0;
+    novo.saldoBitcoin = 0.0;
+    novo.saldoEthereum = 0.0;
+    novo.saldoRipple = 0.0;
+    novo.numTransacoes = 0;
+
+    investidores[numInvestidores++] = novo;
+    salvarInvestidores();  // Salva os investidores no arquivo após o cadastro
+    printf("Investidor cadastrado com sucesso!\n");
+}
