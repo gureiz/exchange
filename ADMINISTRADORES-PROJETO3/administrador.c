@@ -104,3 +104,20 @@ void carregarCriptomoedas() {
         fclose(file);
     }
 }
+
+//login do administrador
+int efetuarLogin() {
+    char cpf[12], senha[20];
+    printf("CPF: ");
+    scanf("%s", cpf);
+    printf("Senha: ");
+    scanf("%s", senha);
+
+    if (strcmp(cpf, ADMIN_CPF) == 0 && strcmp(senha, ADMIN_SENHA) == 0) {
+        printf("Bem-vindo, administrador.\n");
+        return 1;
+    }
+
+    printf("CPF ou senha incorretos.\n");
+    return 0;
+}
