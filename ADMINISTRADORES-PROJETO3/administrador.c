@@ -55,3 +55,22 @@ void salvarInvestidores() {
         fclose(file);
     }
 }
+
+//ler os dados que estao salvos
+void carregarInvestidores() {
+    FILE *file = fopen("usuarios.dat", "rb");
+    if (file != NULL) {
+        while (fscanf(file, "%s %s %s %f %f %f %f %d", 
+                        investidores[numInvestidores].nome, 
+                        investidores[numInvestidores].cpf,
+                        investidores[numInvestidores].senha,
+                        &investidores[numInvestidores].saldoReais,
+                        &investidores[numInvestidores].saldoBitcoin,
+                        &investidores[numInvestidores].saldoEthereum,
+                        &investidores[numInvestidores].saldoRipple,
+                        &investidores[numInvestidores].numTransacoes) != EOF) {
+            numInvestidores++;
+        }
+        fclose(file);
+    }
+}
