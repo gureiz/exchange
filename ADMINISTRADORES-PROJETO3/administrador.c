@@ -74,3 +74,18 @@ void carregarInvestidores() {
         fclose(file);
     }
 }
+
+//salva os dados das criptos em um arquivo .txt
+void salvarCriptomoedas() {
+    FILE *file = fopen("criptomoedas.txt", "w");
+    if (file != NULL) {
+        for (int i = 0; i < numCriptomoedas; i++) {
+            fprintf(file, "%s %.2f %.2f %.2f\n", 
+                    criptomoedas[i].nome, 
+                    criptomoedas[i].cotacaoAtual, 
+                    criptomoedas[i].taxaCompra, 
+                    criptomoedas[i].taxaVenda);
+        }
+        fclose(file);
+    }
+}
