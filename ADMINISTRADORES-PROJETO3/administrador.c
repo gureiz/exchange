@@ -5,7 +5,7 @@
 
 #define MAX_USUARIOS 50
 #define MAX_CRIPTOMOEDAS 50
-#define ADMIN_CPF "123456789-10"
+#define ADMIN_CPF "12345678910"
 #define ADMIN_SENHA "123456"
 
 float cotacaoBitcoin = 50000.0;
