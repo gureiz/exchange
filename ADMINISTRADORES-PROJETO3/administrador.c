@@ -264,3 +264,12 @@ void consultarExtrato() {
     }
     printf("Investidor não encontrado.\n");
 }
+
+//atualizar cotações de criptomoedas
+void atualizarCotas() {
+  srand(time(NULL));
+  cotacaoBitcoin += cotacaoBitcoin * ((rand() % 11 - 5) / 100.0);
+  cotacaoEthereum += cotacaoEthereum * ((rand() % 11 - 5) / 100.0);
+  cotacaoRipple += cotacaoRipple * ((rand() % 11 - 5) / 100.0);
+  printf("Cotações atualizadas!\n");
+}
