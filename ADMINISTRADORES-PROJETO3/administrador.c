@@ -5,7 +5,7 @@
 
 #define MAX_USUARIOS 50
 #define MAX_CRIPTOMOEDAS 50
-#define ADMIN_CPF "123456789-10"
+#define ADMIN_CPF "12345678910"
 #define ADMIN_SENHA "123456"
 
 float cotacaoBitcoin = 50000.0;
@@ -272,4 +272,47 @@ void atualizarCotas() {
   cotacaoEthereum += cotacaoEthereum * ((rand() % 11 - 5) / 100.0);
   cotacaoRipple += cotacaoRipple * ((rand() % 11 - 5) / 100.0);
   printf("Cotações atualizadas!\n");
+}
+
+// Menu principal do administrador
+void menuAdministrador() {
+    int opcao;
+    do {
+        printf("\n--- Menu Administrador ---\n");
+        printf("1. Cadastrar novo investidor\n");
+        printf("2. Excluir investidor\n");
+        printf("3. Cadastrar criptomoeda\n");
+        printf("4. Excluir criptomoeda\n");
+        printf("5. Consultar saldo de investidor\n");
+        printf("6. Consultar extrato de investidor\n");
+        printf("7. Atualizar cotações de criptomoedas\n");
+        printf("0. Sair\n");
+        printf("Escolha uma opção: ");
+        scanf("%d", &opcao);
+
+        switch (opcao) {
+            case 1: cadastrarInvestidor(); break;
+            case 2: excluirInvestidor(); break;
+            case 3: cadastrarCriptomoeda(); break;
+            case 4: excluirCriptomoeda(); break;
+            case 5: consultarSaldo(); break;
+            case 6: consultarExtrato(); break;
+            case 7: atualizarCotas(); break;
+            case 0: printf("Saindo...\n"); break;
+            default: printf("Opção inválida!\n");
+        }
+    } while (opcao != 0);
+}
+
+
+// Função principal
+int main() {
+    carregarInvestidores();  // Carrega os investidores do arquivo
+    carregarCriptomoedas();  // Carrega as criptomoedas do arquivo
+
+    if (efetuarLogin()) {
+        menuAdministrador();
+    }
+
+    return 0;
 }
