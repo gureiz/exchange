@@ -77,6 +77,10 @@ Os arquivos são carregados automaticamente ao iniciar o programa e atualizados 
 
 Esse projeto permite ao administrador gerenciar investidores e criptomoedas com funcionalidades como cadastro, exclusão, consulta de saldos e extratos, e atualização de cotações de criptomoedas.
 
+## Link do REPLIT
+
+https://replit.com/@reisgu267/adm?v=1
+
 ## Participantes
 
 Lucas Gasparetto Pimentel 22.124.025.2
