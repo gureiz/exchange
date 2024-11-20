@@ -227,3 +227,22 @@ void excluirCriptomoeda() {
     }
     printf("Criptomoeda não encontrada.\n");
 }
+
+//consultar saldo de um investidor
+void consultarSaldo() {
+    char cpf[12];
+    printf("Digite o CPF do investidor: ");
+    scanf("%s", cpf);
+
+    for (int i = 0; i < numInvestidores; i++) {
+        if (strcmp(investidores[i].cpf, cpf) == 0) {
+            printf("Saldo do investidor (CPF: %s):\n", cpf);
+            printf("Reais: %.2f\n", investidores[i].saldoReais);
+            printf("Bitcoin: %.6f\n", investidores[i].saldoBitcoin);
+            printf("Ethereum: %.6f\n", investidores[i].saldoEthereum);
+            printf("Ripple: %.6f\n", investidores[i].saldoRipple);
+            return;
+        }
+    }
+    printf("Investidor não encontrado.\n");
+}
