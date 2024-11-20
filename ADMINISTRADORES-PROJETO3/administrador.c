@@ -246,3 +246,21 @@ void consultarSaldo() {
     }
     printf("Investidor não encontrado.\n");
 }
+
+//consultar extrato de um investidor
+void consultarExtrato() {
+    char cpf[12];
+    printf("Digite o CPF do investidor: ");
+    scanf("%s", cpf);
+
+    for (int i = 0; i < numInvestidores; i++) {
+        if (strcmp(investidores[i].cpf, cpf) == 0) {
+            printf("Extrato do investidor (CPF: %s):\n", cpf);
+            for (int j = 0; j < investidores[i].numTransacoes; j++) {
+                printf("%d: %s\n", j + 1, investidores[i].historico[j]);
+            }
+            return;
+        }
+    }
+    printf("Investidor não encontrado.\n");
+}
