@@ -198,3 +198,32 @@ void cadastrarCriptomoeda() {
     salvarCriptomoedas();  // Salva as criptomoedas no arquivo após o cadastro
     printf("Cadastrada com sucesso!\n");
 }
+
+//excluir uma criptomoeda
+void excluirCriptomoeda() {
+    char nome[20];
+    printf("Digite o nome da criptomoeda a ser excluída: ");
+    scanf("%s", nome);
+
+    for (int i = 0; i < numCriptomoedas; i++) {
+        if (strcmp(criptomoedas[i].nome, nome) == 0) {
+            printf("Criptomoeda encontrada:\n");
+            printf("Nome: %s, Cotação: %.2f\n", criptomoedas[i].nome, criptomoedas[i].cotacaoAtual);
+            printf("Confirmar exclusão? (S/N): ");
+            char confirmacao;
+            scanf(" %c", &confirmacao);
+            if (confirmacao == 'S' || confirmacao == 's') {
+                for (int j = i; j < numCriptomoedas - 1; j++) {
+                    criptomoedas[j] = criptomoedas[j + 1];
+                }
+                numCriptomoedas--;
+                printf("Criptomoeda excluída com sucesso!\n");
+                return;
+            } else {
+                printf("Operação cancelada.\n");
+                return;
+            }
+        }
+    }
+    printf("Criptomoeda não encontrada.\n");
+}
